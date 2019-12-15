@@ -7,8 +7,10 @@ access_key = ${AWS_ACCESS_KEY}
 secret_key = ${AWS_SECRET_KEY}
 EOF
   if [ -d world ]; then
+    echo "Syncing World"
     s3cmd sync world/ s3://${AWS_BUCKET}/world/
   else
+    echo "Copying World"
     mkdir -p world
     cd world
     s3cmd get --recursive s3://${AWS_BUCKET}/world/
