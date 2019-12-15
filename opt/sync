@@ -7,6 +7,7 @@ if [ -n "$AWS_BUCKET" ]; then
 access_key = ${AWS_ACCESS_KEY}
 secret_key = ${AWS_SECRET_KEY}
 EOF
+  s3cmd ls s3://${AWS_BUCKET}
   if [ -d world ]; then
     echo "Syncing World"
     s3cmd sync world/ s3://${AWS_BUCKET}/world/
