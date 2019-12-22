@@ -8,14 +8,14 @@ access_key = ${AWS_ACCESS_KEY}
 secret_key = ${AWS_SECRET_KEY}
 EOF
   s3cmd ls s3://${AWS_BUCKET}
-  if [ -d world ]; then
+  if [ -d ${MINECRAFT_WORLD_NAME} ]; then
     echo "Syncing World"
-    s3cmd sync world/ s3://${AWS_BUCKET}/world/
+    s3cmd sync ${MINECRAFT_WORLD_NAME}/ s3://${AWS_BUCKET}/${MINECRAFT_WORLD_NAME}/
   else
     echo "Copying World"
-    mkdir -p world
-    cd world
-    s3cmd get --recursive s3://${AWS_BUCKET}/world/
+    mkdir -p ${MINECRAFT_WORLD_NAME}
+    cd ${MINECRAFT_WORLD_NAME}
+    s3cmd get --recursive s3://${AWS_BUCKET}/$MINECRAFT_WORLD_NAME/
     cd ..
   fi
   rm .s3cfg
