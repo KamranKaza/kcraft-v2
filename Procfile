@@ -1,1 +1,1 @@
-web: bin/Minecraft
+web: bin/minecraft
