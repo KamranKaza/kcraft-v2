@@ -11,6 +11,8 @@ EOF
   if [ -d ${MINECRAFT_WORLD_NAME} ]; then
     echo "Syncing World"
     s3cmd sync ${MINECRAFT_WORLD_NAME}/ s3://${AWS_BUCKET}/${MINECRAFT_WORLD_NAME}/
+    echo "Syncing Plugins"
+    s3cmd sync plugins/ s3://${AWS_BUCKET}/plugins/
   else
     echo "Copying World"
     mkdir -p ${MINECRAFT_WORLD_NAME}
