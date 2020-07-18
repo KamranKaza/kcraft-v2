@@ -13,8 +13,9 @@ EOF
     s3cmd sync ${MINECRAFT_WORLD_NAME}/ s3://${AWS_BUCKET}/${MINECRAFT_WORLD_NAME}/
     echo "Syncing Plugins"
     s3cmd sync plugins/ s3://${AWS_BUCKET}/plugins/
-    for entry in `ls plugins`; do
-      echo $entry
+    for entry in "plugins"/*
+    do
+        echo "$entry"
     done
   else
     echo "Copying World"
