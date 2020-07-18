@@ -12,7 +12,7 @@ EOF
     echo "Syncing World Name: " ${MINECRAFT_WORLD_NAME}
     s3cmd sync ${MINECRAFT_WORLD_NAME}/ s3://${AWS_BUCKET}/${MINECRAFT_WORLD_NAME}/
     echo "Syncing Plugins"
-    s3cmd sync plugins/ s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}/
+    s3cmd sync ${PLUGIN_DIRECTORY}/ s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}/
     for entry in ${PLUGIN_DIRECTORY}/*
     do
         echo "$entry"
