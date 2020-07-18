@@ -7,7 +7,7 @@ if [ -n "$AWS_BUCKET" ]; then
 access_key = ${AWS_ACCESS_KEY}
 secret_key = ${AWS_SECRET_KEY}
 EOF
-#comment out this:  s3cmd ls s3://${AWS_BUCKET}
+s3cmd ls s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}/
   if [ -d ${MINECRAFT_WORLD_NAME} ]; then
     echo "Syncing World Name: " ${MINECRAFT_WORLD_NAME}
     s3cmd sync ${MINECRAFT_WORLD_NAME}/ s3://${AWS_BUCKET}/${MINECRAFT_WORLD_NAME}/
