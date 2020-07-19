@@ -22,12 +22,13 @@ EOF
   
   # This section tries to copy the plugin data from storage on AMAZON
   if [ -d ${MINECRAFT_WORLD_NAME} ]; then
-    echo "Syncing Plugins:"
+    echo "Syncing Plugins"
     s3cmd ls s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}/
   else
-    # tried to sync with this, but its failing.. s3cmd sync ${PLUGIN_DIRECTORY}/ s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}/
+    # tried to sync with this, but its failing.. s3cmd sync ${PLUGIN_DIRECTORY}/ s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}
     mkdir -p ${PLUGIN_DIRECTORY}
     cd ${PLUGIN_DIRECTORY}
+    echo "Copying Plugins"
     s3cmd get --recursive s3://${AWS_BUCKET}/$PLUGIN_DIRECTORY/
     cd ..
     for entry in ${PLUGIN_DIRECTORY}/*
