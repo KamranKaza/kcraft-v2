@@ -21,7 +21,7 @@ EOF
   fi
   
   # This section tries to copy the plugin data from storage on AMAZON
-  if [ -d ${MINECRAFT_WORLD_NAME} ]; then
+  if [ -d ${PLUGIN_DIRECTORY} ]; then
     echo "Syncing Plugins"
     s3cmd ls s3://${AWS_BUCKET}/${PLUGIN_DIRECTORY}/
   else
